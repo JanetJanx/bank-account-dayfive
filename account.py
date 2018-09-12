@@ -6,12 +6,12 @@ class BankAccount(object):
         self.pin_number = pin_number
     
     def __repr__(self):
-        return "".format(BancAccount (self.account_number, self.name))
+        return "<BankAccount {} {}>".format(BancAccount (self.account_number, self.name))
 
     def get_balance(self):
         #check account status
         if self.status != "open":
-            raise ValueError
+            raise ValueError("Dear Customer, your account was closed")
         return self.balance
 
     def open(self, balance = 0):
@@ -21,10 +21,10 @@ class BankAccount(object):
     def deposit(self, amount):
         #can't deposit into closed account
         if self.status == "closed":
-            raise ValueError
+            raise ValueError("Dear Customer, you can't make any deposit cause account was closed")
         #can't deposit negative amount
         if amount <=0:
-            raise ValueError
+            raise ValueError("Dear Customer, you can't deposit negative amount of money")
 
         self.balance += amount
         return self.balance
@@ -32,11 +32,11 @@ class BankAccount(object):
     def withdraw(self, amount):
         #can't withdraw more than deposited
         if self.balance < amount:
-            raise ValueError
+            raise ValueError("Dear Customer, you can't withdrawal morethan your account balance")
         
         #can't withdraw negative money
         if amount < 0:
-            raise ValueError
+            raise ValueError("Dear Customer, you can't withdrawal negative amount of money")
         
         self.balance -= amount
         return self.balance
