@@ -6,7 +6,7 @@ class BankAccount(object):
         self.pin_number = pin_number
     
     def __repr__(self):
-        return "<BankAccount {} {}>".format(BancAccount (self.account_number, self.name))
+        return '{} {} {}'.format(self.account_number, self.name, self.pin_number)
 
     def get_balance(self):
         #check account status
@@ -45,3 +45,7 @@ class BankAccount(object):
         #close account 
         self.status = "closed"
         return self.status
+
+
+b = BankAccount(12345, "janet", 22)
+print(b.__repr__())
